@@ -242,7 +242,8 @@
         	<div><h4 style="color: white;padding-top: 31px;">Donate</h4></div>
         </div>
         <div class="row" style="background: url('{{asset('img/lovvvv.png')}}'); height: 494px;background-size: 100% 100%;">
-        	sdfdfsdd
+
+
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
