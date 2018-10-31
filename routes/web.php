@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/member', function () {
+    return view('member');
+});
+
+Route::get('/doctor', function () {
+    return view('auth/doctor');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/doctor', 'RegisterController@doctor')->name('doctor');
