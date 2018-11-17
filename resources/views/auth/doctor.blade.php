@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('doctor') }}">
                         @csrf
 
                         {{-- <div class="form-group row">
@@ -55,6 +55,74 @@
                         </div>
 
                         {{-- end firstname --}}
+
+                        {{-- start specialty --}}
+                        <div class="form-group row">
+                            <label for="firstname" class="col-md-4 col-form-label text-md-right">Specialty</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('specialty') ? ' is-invalid' : '' }}" name="specialty" value="{{ old('specialty') }}" required autofocus>
+
+                                @if ($errors->has('specialty'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('specialty') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{-- end specialty --}}
+
+                        {{-- start years of exper --}}
+                        <div class="form-group row">
+                            <label for="years" class="col-md-4 col-form-label text-md-right">Years of Experince</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('years') ? ' is-invalid' : '' }}" name="years" value="{{ old('years') }}" required autofocus>
+
+                                @if ($errors->has('years'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('years') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{-- end years --}}
+
+                        {{-- start specialty --}}
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus>
+
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{-- end specialty --}}
+
+                        {{-- start location --}}
+                        <div class="form-group row">
+                            <label for="location" class="col-md-4 col-form-label text-md-right">Location</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ old('location') }}" required autofocus>
+
+                                @if ($errors->has('location'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('location') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{-- end specialty --}}
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

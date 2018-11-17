@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $this->app->singleton(Verifier::class, function ($app) {
+            return new Verifier('firebase-project-name');
+        });
     }
 
     /**

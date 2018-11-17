@@ -26,6 +26,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+        Auth::viaRequest('firebase', function ($request) {
+            return app(FirebaseGuard::class)->user($request);
+        });
     }
 
     // Auth::viaRequest('firebase', function ($request) {

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Kreait\Firebase;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class RegisterController extends Controller
 {
@@ -71,7 +74,42 @@ class RegisterController extends Controller
     }
 
 
-    public function Doctor(){
+    public function Doctor(Request $request){
+        $this->validate($request, [
+            'surname'   => 'required',
+            'firstname' => 'required',
+            'specialty' => 'required',
+            'years'     => 'required',
+            'phone'     => 'required',
+            'location'  => 'required',
+            'email'     => 'required',
+            'password'  => 'required',
+        ]);
+
+        $serviceAccount         = ServiceAccount::fromJsonFile(__DIR__.'/drcloudapp-firebase-adminsdk-tkkut-8ceb04edac.json');
+        $firebase               = (new Factory)
+                                    ->withServiceAccount($serviceAccount)
+                                    ->withDatabaseUri('https://drcloudapp.firebaseio.com/')
+                                    ->create();
+
+        $database               = $firebase->getDatabase();
+
+        $newPost                = $database
+                                    ->getReference('doctor/')
+                                    ->push([  'surname'         => $request->surname,
+                                              'first_name'      => $request->firstname,
+                                              'last_name'       => '',
+                                              'specialty'       => $request->specialty,
+                                              'years'           => $request->years,
+                                              'phone'           => $request->phone,
+                                              'location'        => $request->location,
+                                              'email'           => $email->email,
+                                              'password'        => $email->password,
+
+                                    ]);
+        echo '<pre>';
+        print_r($newPost->getvalue());
+
       return view('home');
     }
 }
